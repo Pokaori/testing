@@ -7,7 +7,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install seleniu
 ```bash
 pip install selenium
 ```
-#Selenium tests
+# Selenium tests
 1. Зайти в Google
 2. Знайти Animevost
 3. Перейти по першому посиланню
