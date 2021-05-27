@@ -50,19 +50,20 @@ class TestClass:
 
     def test_anime(self,url):
         self.driver__.get(url)
-        self.search(".//*[@class='a4bIc']/input", "Animevost")
+        self.search(".//*[@class='a4bIc']/input", "Бартник")
         self.driver__.set_page_load_timeout(10)
-        try:
-            self.driver__.find_elements_by_xpath(".//*[@class='yuRUbf']/a")[0].click()
-        except:
-            print("We couldn`t load for some time")
+        self.driver__.find_elements_by_xpath(".//*[@class='yuRUbf']/a")[0].click()
         time.sleep(3)
-        self.driver__.find_elements_by_xpath(".//*[@id='news_set_sort']/a[2]")[0].click()
+        self.driver__.find_elements_by_xpath(".//*[@class='dropdown-toggle dropdown-setting']")[0].click()
         time.sleep(3)
-        self.driver__.find_elements_by_xpath(".//*[@class='shortstory']/div/h2/a")[0].click()
+        lan = self.driver__.find_elements_by_xpath(".//*[@class='_dropdown-menu languages-list']//*[@href='en']")[0]
+        if lan:
+            lan.click()
         time.sleep(3)
-        name=self.driver__.find_elements_by_xpath(".//*[@class='shortstoryContent']//td/h4")[0].get_property("textContent")
-        assert  name == \
-        "Gekijouban Kimetsu no Yaiba: Mugen Ressha Hen | Demon Slayer the Movie: Mugen Train" \
-        " | Истребитель демонов: Бесконечный поезд" , "'Demon Slayer the Movie: Mugen Train' is not the most popular anime"
+        self.driver__.find_elements_by_xpath(".//*[@class='search-btn js-search-bt']")[0].click()
+        time.sleep(3)
+        self.search(".//*[@class='form-control input-lg']", "Natural multiflower honey 250 g.")
+        time.sleep(3)
+        price=self.driver__.find_elements_by_xpath(".//*[@class='price']")[0].get_property("textContent").split()[0]
+        assert  float(price) <=50,"Honey price is more than 50 UAH"
         time.sleep(10)
