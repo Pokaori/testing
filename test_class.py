@@ -48,7 +48,7 @@ class TestClass:
                "Epicenter doesn`t work from 07:30 to 22:30"
         time.sleep(10)
 
-    def test_anime(self,url):
+    def test_honey(self,url):
         self.driver__.get(url)
         self.search(".//*[@class='a4bIc']/input", "Бартник")
         self.driver__.set_page_load_timeout(10)
